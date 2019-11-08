@@ -1,0 +1,85 @@
+---
+author: 'Matthew Lee'
+date: 'July 2021' # Month and year of submission
+title: "I made this template based on thesisdown to comply with the University of Bristol regulations"
+university: "University of Bristol"
+faculty: "Health Sciences"
+school: "Bristol Medical School"
+group: "MRC Integrative Epidemiologu Unit"
+degree: "Population Health Sciences"
+logo: figure/index/UoBcrest.pdf # logo will only show on PDF
+bibliography: bib/thesis.bib # location of your bibliography 
+csl: csl/apa.csl # location of your referencing style 
+knit: "bookdown::render_book" # doesnt need changing 
+site: bookdown::bookdown_site # doesnt need changing 
+toc-depth: 3 # change for the depth of the table of contents - 1 gives two levels, 2 gives 3 levels etc...
+lot: true 
+lof: true
+space_between_paragraphs: true
+fig_caption: true
+header-includes:
+    \usepackage{tikz}
+    \usepackage{booktabs}
+    \usepackage{longtable}
+    \usepackage{siunitx}
+    \pagestyle{plain}
+output: 
+  thesisdown::thesis_pdf: default
+#  thesisdown::thesis_gitbook: default
+#  thesisdown::thesis_word: default
+#  thesisdown::thesis_epub: default
+abstract: |
+  `r if(knitr:::is_latex_output()) paste(readLines("00-abstract.Rmd"), collapse = '\n  ')`
+acknowledgements: |
+  `r if(knitr:::is_latex_output()) paste(readLines("00-acknowledgements.Rmd"), collapse = '\n  ')`
+declaration: |
+  `r if(knitr:::is_latex_output()) paste(readLines("00-declaration.Rmd"), collapse = '\n  ')`
+abbreviations: |
+  `r if(knitr:::is_latex_output()) paste(readLines("00-abbreviations.Rmd"), collapse = '\n  ')`
+---
+
+```{r thesis-setup, include = FALSE}
+# you need these packages
+if(!require(devtools))
+  install.packages("devtools", repos = "http://cran.rstudio.com")
+if(!require(thesisdown))
+  devtools::install_github("ismayc/thesisdown")
+library(thesisdown)
+if(!require(kableExtra))
+  devtools::install_github("haozhu233/kableExtra")
+library(kableExtra)
+if(!require(tinytex))
+  devtools::install_github('yihui/tinytex')
+library(tinytex)
+options(tinytex.verbose = TRUE)
+if(!require(flextable))
+  devtools::install_github("davidgohel/flextable")
+library(flextable)
+
+# this will allow us to make word documents with relatively ok tables
+doc.type <- knitr::opts_knit$get('rmarkdown.pandoc.to')
+```
+
+# Preface {.unnumbered}
+This template is based on (and in many places copied directly from) the Reed College LaTeX template, but hopefully it will provide a nicer interface for those that have never used TeX or LaTeX before.  Using _R Markdown_ will also allow you to easily keep track of your analyses in **R** chunks of code, with the resulting plots and output included as well.  The hope is this _R Markdown_ template gets you in the habit of doing reproducible research, which benefits you long-term as a researcher, but also will greatly help anyone that is trying to reproduce or build onto your results down the road.
+
+Hopefully, you won't have much of a learning period to go through and you will reap the benefits of a nicely formatted thesis.  The use of LaTeX in combination with _Markdown_ is more consistent than the output of a word processor, much less prone to corruption or crashing, and the resulting file is smaller than a Word file. While you may have never had problems using Word in the past, your thesis is likely going to be about twice as large and complex as anything you've written before, taxing Word's capabilities.  After working with _Markdown_ and **R** together for a few weeks, we are confident this will be your reporting style of choice going forward.
+
+<!-- 
+If you're still on the fence about using _R Markdown_, check out the resource for newbies available at <https://ismayc.github.io/rbasics-book/> or email us at <data@reed.edu>. 
+-->
+
+**Why use it?**
+
+_R Markdown_ creates a simple and straightforward way to interface with the beauty of LaTeX.  Packages have been written in **R** to work directly with LaTeX to produce nicely formatting tables and paragraphs. In addition to creating a user friendly interface to LaTeX, _R Markdown_ also allows you to read in your data, to analyze it and to visualize it using **R** functions, and also to provide the documentation and commentary on the results of your project.  Further, it allows for **R** results to be passed inline to the commentary of your results.  You'll see more on this later.  
+
+<!-- 
+Having your code and commentary all together in one place has a plethora of benefits!
+-->
+
+**Who should use it?**
+
+Anyone who needs to use data analysis, math, tables, a lot of figures, complex cross-references, or who just cares about the final appearance of their document should use _R Markdown_. Of particular use should be anyone in the sciences, but the user-friendly nature of _Markdown_ and its ability to keep track of and easily include figures, automatically generate a table of contents, index, references, table of figures, etc. should make it of great benefit to nearly anyone writing a thesis project.
+
+**For additional help with bookdown** 
+Please visit [the free online bookdown reference guide](https://bookdown.org/yihui/bookdown/).

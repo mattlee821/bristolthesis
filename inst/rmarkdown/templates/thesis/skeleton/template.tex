@@ -1,0 +1,157 @@
+% bristolthesis template.tex file
+% Best not to fiddle with this much/at all or things might break
+% This needs to line up with the contents of bristolthesis.cls and vice versa
+%
+%
+%
+%
+%
+
+\documentclass[11pt,twoside]{bristolthesis}
+
+%% Packages - these are those which i used for my thesis so might not be specific to yours
+\usepackage{graphicx,latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{setspace}
+\usepackage{siunitx}
+% \usepackage{chemarr} %% Useful for one reaction arrow, useless if you're not a chem major
+\usepackage[hyphens]{url}
+\usepackage{hyperref}
+\usepackage{lmodern}
+\usepackage{float}
+\floatplacement{figure}{H}
+\usepackage{rotating}
+% \usepackage{times} % other fonts are available like times, bookman, charter, palatino
+
+%% Paramaters for global document
+\hypersetup{colorlinks = false}
+\renewcommand{\UrlBreaks}{\do\/\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z\do\0\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\%\do\.\do\-}
+\renewcommand{\chapterautorefname}{Chapter}
+\usepackage{times} % other fonts are available like times, bookman, charter, palatino
+\usepackage{caption}
+
+% Use ref for internal links
+\renewcommand{\hyperref}[2][???]{\autoref{#1}}
+\def\chapterautorefname{Chapter}
+\def\sectionautorefname{Section}
+\def\subsectionautorefname{Subsection}
+\usepackage{caption}
+\captionsetup{width=5in}
+
+% Syntax highlighting #22
+$if(highlighting-macros)$
+  $highlighting-macros$
+$endif$
+%%%
+
+%%% YAML header functions
+\title{$title$}
+\author{$author$}
+\date{$date$}
+\university{$university$}
+\faculty{$faculty$}
+\school{$school$}
+\group{$group$}
+\wordcount{$wordcount$}
+\degree{$degree$}
+\logo{$logo$}
+%%%
+
+
+%%% The document formatting
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\renewcommand{\contentsname}{Table of Contents}
+
+\setlength{\parskip}{14truept}
+
+$if(space_between_paragraphs)$
+  \setlength{\parskip}{\baselineskip}
+  \usepackage[parfill]{parskip}
+$endif$
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\Acknowledgements{
+$acknowledgements$
+}
+
+\Declaration{
+$declaration$
+}
+
+\Abstract{
+$abstract$
+}
+
+\Abbreviations{
+$abbreviations$
+}
+
+$for(header-includes)$
+	$header-includes$
+$endfor$
+
+
+%%% Main document
+\spacing{2}
+\begin{document}
+$if(title)$
+  \maketitle
+$endif$
+
+\frontmatter % this stuff will be roman-numbered
+\pagestyle{empty} % this removes page numbers from the frontmatter
+$if(abstract)$
+  \begin{abstract}
+    $abstract$
+  \end{abstract}
+$endif$
+$if(acknowledgements)$
+  \begin{acknowledgements}
+    $acknowledgements$
+  \end{acknowledgements}
+$endif$
+$if(declaration)$
+  \begin{declaration}
+    $declaration$
+  \end{declaration}
+$endif$
+$if(toc)$
+  \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
+  \setcounter{tocdepth}{$toc-depth$}
+  \tableofcontents
+$endif$
+$if(lot)$
+  \listoftables
+$endif$
+$if(lof)$
+  \listoffigures
+$endif$
+
+\mainmatter % here the regular arabic numbering starts
+\pagestyle{plain}
+$body$
+$if(abbreviations)$
+  \begin{abbreviations}
+    $abbreviations$
+  \end{abbreviations}
+$endif$
+
+\end{document}
+
+
+

@@ -1,0 +1,22 @@
+Package: bristolthesis
+Type: Package
+Title: An updated thesisdown package for the University of Bristol
+Version: 0.0.1
+Authors@R: person("Matthew", "Lee", email = "matthew.lee@bristol.ac.uk", role = "cre")
+Maintainer: Matthew Lee <matthew.lee@bristol.ac.uk>
+Description: 
+    bristolthesis is an adaptation of thesisdown to produce a thesis that can be used at the University of Bristol.
+    The thesisdown package uses bookdown and LaTeX and word templates from Reed College. We use this as a basis for bristolthesis.        
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Depends:
+    R (>= 3.2.0),
+    devtools,
+    dplyr,
+    ggplot2,
+    bookdown,
+    knitr,
+    kableExtra,
+    flextable
+RoxygenNote: 6.1.1
