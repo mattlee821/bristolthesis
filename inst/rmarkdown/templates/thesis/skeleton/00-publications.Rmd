@@ -1,0 +1,6 @@
+<style>
+body {
+text-align: justify}
+</style>
+
+The greatest publication list ever

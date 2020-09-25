@@ -335,6 +335,16 @@
   \fontsize{12}{14}\selectfont
 }{\clearpage \if@restonecol\twocolumn\fi}%
 
+%% Publications
+\newenvironment{publications}{%
+  \if@twocolumn
+    \@restonecoltrue\onecolumn
+  \else
+    \@restonecolfalse
+  \fi
+  \chapter*{Publications}
+  \fontsize{12}{14}\selectfont
+}{\clearpage \if@restonecol\twocolumn\fi}%
 
 %%% Other things
 \renewcommand{\title}[1]{\def\@title{#1}}
@@ -342,3 +352,4 @@
 \newcommand{\Acknowledgements}[1]{\def\@Acknowledgements{#1}}
 \newcommand{\Declaration}[1]{\def\@Declaration{#1}}
 \newcommand{\Abbreviations}[1]{\def\@Abbreviations{#1}}
+\newcommand{\Publications}[1]{\def\@Publications{#1}}
