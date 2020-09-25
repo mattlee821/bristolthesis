@@ -12,7 +12,6 @@ bibliography: bib/thesis.bib # location of your bibliography
 csl: csl/apa.csl # location of your referencing style 
 knit: "bookdown::render_book" # doesnt need changing 
 site: bookdown::bookdown_site # doesnt need changing 
-toc-depth: 3 # change for the depth of the table of contents - 1 gives two levels, 2 gives 3 levels etc...
 lot: true 
 lof: true
 space_between_paragraphs: true
@@ -24,7 +23,9 @@ header-includes:
     \usepackage{siunitx}
     \pagestyle{plain}
 output: 
-  thesisdown::thesis_pdf: default
+  thesisdown::thesis_pdf: 
+    toc: true
+    toc-depth: 3 # change for the depth of the table of contents - 1 gives two levels, 2 gives 3 levels etc...
 #  thesisdown::thesis_gitbook: default
 #  thesisdown::thesis_word: default
 #  thesisdown::thesis_epub: default

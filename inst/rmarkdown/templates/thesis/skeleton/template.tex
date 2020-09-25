@@ -132,8 +132,11 @@ $if(declaration)$
 $endif$
 $if(toc)$
   \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
+  {
   \setcounter{tocdepth}{$toc-depth$}
+  \setcounter{secnumdepth}{$toc-depth$}
   \tableofcontents
+  }
 $endif$
 $if(lot)$
   \listoftables
