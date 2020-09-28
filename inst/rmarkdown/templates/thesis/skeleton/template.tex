@@ -8,6 +8,8 @@
 %
 
 \documentclass[11pt,twoside]{bristolthesis}
+% \documentclass[11pt,oneside]{bristolthesis} %% use this option if you don't want every other page to be off to one side -- SHOULD CHANGE BACK TO TWOSIDED FOR PRINTING
+
 
 %% Packages - these are those which i used for my thesis so might not be specific to yours
 \usepackage{graphicx,latexsym}
@@ -20,7 +22,7 @@
 \usepackage{siunitx}
 % \usepackage{chemarr} %% Useful for one reaction arrow, useless if you're not a chem major
 \usepackage[hyphens]{url}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref} %% remove [hidelinks] to have a red box appear around cross-references and hyperlinks
 \usepackage{lmodern}
 \usepackage{float}
 \floatplacement{figure}{H}
@@ -97,6 +99,10 @@ $declaration$
 $abstract$
 }
 
+\Publications{
+$Publications$
+}
+
 \Abbreviations{
 $abbreviations$
 }
@@ -104,6 +110,15 @@ $abbreviations$
 $for(header-includes)$
 	$header-includes$
 $endfor$
+
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+$endif$
 
 
 %%% Main document
@@ -125,6 +140,11 @@ $if(acknowledgements)$
     $acknowledgements$
   \end{acknowledgements}
 $endif$
+$if(publications)$
+  \begin{publications}
+    $publications$
+  \end{publications}
+$endif$
 $if(declaration)$
   \begin{declaration}
     $declaration$
@@ -132,8 +152,11 @@ $if(declaration)$
 $endif$
 $if(toc)$
   \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
+  {
   \setcounter{tocdepth}{$toc-depth$}
+  \setcounter{secnumdepth}{$toc-depth$}
   \tableofcontents
+  }
 $endif$
 $if(lot)$
   \listoftables

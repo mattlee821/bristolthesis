@@ -12,7 +12,6 @@ bibliography: bib/thesis.bib # location of your bibliography
 csl: csl/apa.csl # location of your referencing style 
 knit: "bookdown::render_book" # doesnt need changing 
 site: bookdown::bookdown_site # doesnt need changing 
-toc-depth: 3 # change for the depth of the table of contents - 1 gives two levels, 2 gives 3 levels etc...
 lot: true 
 lof: true
 space_between_paragraphs: true
@@ -24,7 +23,9 @@ header-includes:
     \usepackage{siunitx}
     \pagestyle{plain}
 output: 
-  thesisdown::thesis_pdf: default
+  thesisdown::thesis_pdf: 
+    toc: true
+    toc-depth: 3 # change for the depth of the table of contents - 1 gives two levels, 2 gives 3 levels etc...
 #  thesisdown::thesis_gitbook: default
 #  thesisdown::thesis_word: default
 #  thesisdown::thesis_epub: default
@@ -32,6 +33,8 @@ abstract: |
   `r if(knitr:::is_latex_output()) paste(readLines("00-abstract.Rmd"), collapse = '\n  ')`
 acknowledgements: |
   `r if(knitr:::is_latex_output()) paste(readLines("00-acknowledgements.Rmd"), collapse = '\n  ')`
+publications: |
+  `r if(knitr:::is_latex_output()) paste(readLines("00-publications.Rmd"), collapse = '\n  ')`
 declaration: |
   `r if(knitr:::is_latex_output()) paste(readLines("00-declaration.Rmd"), collapse = '\n  ')`
 abbreviations: |
@@ -55,6 +58,15 @@ options(tinytex.verbose = TRUE)
 if(!require(flextable))
   devtools::install_github("davidgohel/flextable")
 library(flextable)
+if(!require(dplyr))
+  install.packages("dplyr", repos = "http://cran.rstudio.com")
+library(dplyr)
+if(!require(ggplot2))
+  install.packages("ggplot2", repos = "http://cran.rstudio.com")
+library(ggplot2)
+if(!require(knitr))
+  install.packages("knitr", repos = "http://cran.rstudio.com")
+library(knitr)
 
 # this will allow us to make word documents with relatively ok tables
 doc.type <- knitr::opts_knit$get('rmarkdown.pandoc.to')
