@@ -1,3 +1,24 @@
+---
+output: 
+    thesisdown::thesis_pdf: default
+bibliography: bib/thesis.bib
+csl: csl/nature.csl
+space_betwee_paragraphs: true
+fig_caption: true
+always_allow_html: yes
+link-citations: true
+toc-depth: 1
+lot: true
+lof: true
+editor_options: 
+  chunk_output_type: console
+---
+
+<style>
+body {
+text-align: justify}
+</style>
+
 ```{r include_packages_2, include = FALSE}
 # This chunk ensures that the thesisdown package is
 # installed and loaded. This thesisdown package includes
@@ -16,11 +37,11 @@ if(!require(thesisdown)){
   devtools::install_github("ismayc/thesisdown")
   }
 library(thesisdown)
-flights <- read.csv("data/flights.csv")
+flights <- read.csv("data/chapter3/flights.csv")
 ```
 
 
-# Tables, Graphics, References, and Labels {#ref-labels}
+# Tables, Graphics, References, and Labels {#chapter3}
 
 ## Tables
 
@@ -56,7 +77,7 @@ In the **R** chunk below, we will load in a picture stored as `reed.jpg` in our 
 (ref:reedlogo-scap) Reed logo
 
 ```{r reedlogo, fig.cap="(ref:reedlogo-cap)", fig.scap="(ref:reedlogo-scap)"}
-include_graphics(path = "figure/reed.jpg")
+knitr::include_graphics(path = "data/chapter3/reed.jpg")
 ```
 
 Here is a reference to the Reed logo: Figure \@ref(fig:reedlogo).  Note the use of the `fig:` code here.  By naming the **R** chunk that contains the figure, we can then reference that figure later as done in the first sentence here.  We can also specify the caption for the figure via the R chunk option `fig.cap` and we can specify the label that will appear in the list of figures via the R chunk option `fig.scap`. 
@@ -83,7 +104,7 @@ A table linking these carrier codes to airline names is available at <https://gi
 Next, we will explore the use of the `out.extra` chunk option, which can be used to shrink or expand an image loaded from a file by specifying `"scale= "`. Here we use the mathematical graph stored in the "subdivision.pdf" file.
 
 ```{r subd, results="asis", echo=FALSE, fig.cap="Subdiv. graph", out.extra="scale=0.75"}
-include_graphics("figure/subdivision.pdf")
+knitr::include_graphics("data/chapter3/subdivision.pdf")
 ```
 
 Here is a reference to this image: Figure \@ref(fig:subd).  Note that `echo=FALSE` is specified so that the **R** code is hidden in the document.
@@ -93,7 +114,7 @@ Here is a reference to this image: Figure \@ref(fig:subd).  Note that `echo=FALS
 Lastly, we will explore how to rotate and enlarge figures using the `out.extra` chunk option.  (Currently this only works in the PDF version of the book.)
 
 ```{r subd2, results="asis", echo=FALSE, out.extra="angle=180, scale=1.1", fig.cap="A Larger Figure, Flipped Upside Down"}
-include_graphics("figure/subdivision.pdf")
+knitr::include_graphics("data/chapter3/subdivision.pdf")
 ```
 
 As another example, here is a reference: Figure \@ref(fig:subd2).  

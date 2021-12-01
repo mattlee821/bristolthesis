@@ -1,12 +1,25 @@
-<!--
-This is for including Chapter 1.  Notice that it's also good practice to name your chunk.  This will help you debug potential issues as you knit.  The chunk above is called intro and the one below is called chapter1.  Feel free to change the name of the Rmd file as you wish, but don't forget to change it here from chap1.Rmd.
--->
+---
+output: 
+    thesisdown::thesis_pdf: default
+bibliography: bib/thesis.bib
+csl: csl/nature.csl
+space_betwee_paragraphs: true
+fig_caption: true
+always_allow_html: yes
+link-citations: true
+toc-depth: 1
+lot: true
+lof: true
+editor_options: 
+  chunk_output_type: console
+---
 
-<!--
-The {#rmd-basics} text after the chapter declaration will allow us to link throughout the document back to the beginning of Chapter 1.  These labels will automatically be generated (if not specified) by changing the spaces to hyphens and capital letters to lowercase.  Look for the reference to this label at the beginning of Chapter 2.
--->
+<style>
+body {
+text-align: justify}
+</style>
 
-# R Markdown Basics {#rmd-basics}
+# R Markdown Basics {#chapter1}
 
 Here is a brief introduction into using _R Markdown_. _Markdown_ is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. _R Markdown_ provides the flexibility of _Markdown_ with the implementation of **R** input and output.  For more details on using _R Markdown_ see <http://rmarkdown.rstudio.com>.  
 
@@ -92,7 +105,7 @@ Included in this template is a file called `flights.csv`.  This file includes a 
 We can load in this data set using the following command:
 
 ```{r load_data}
-flights <- read.csv("data/flights.csv")
+flights <- read.csv("data/chapter3/flights.csv")
 ```
 
 The data is now stored in the data frame called `flights` in **R**.  To get a better feel for the variables included in this dataset we can use a variety of functions.  Here we can see the dimensions (rows by columns) and also the names of the columns.
@@ -123,6 +136,7 @@ new.pkg <- pkg[!(pkg %in% installed.packages())]
 if (length(new.pkg))
   install.packages(new.pkg, repos = "http://cran.rstudio.com")
 # Load packages (thesisdown will load all of the packages as well)
+lapply(pkg, require, character.only = TRUE)
 library(thesisdown)
 ```
 

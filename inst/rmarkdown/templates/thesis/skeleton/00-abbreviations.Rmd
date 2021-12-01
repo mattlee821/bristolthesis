@@ -1,3 +1,53 @@
-\textbf{ACR} - acronym <br>
+---
+output: 
+    thesisdown::thesis_pdf: 
+      toc: true
+      toc-depth: 2
+      latex_engine: pdflatex
+editor_options: 
+  chunk_output_type: console
+---
 
-\textbf{aACR} - another acronym <br>
+The best way to make a list of abbreviations is to make a data frame using `R`, make a table of this data frame using `kable` and specifying the format as \LaTeX, then copy and paste the output of that to make the printed table as below
+
+<!--
+table <- tibble(
+  
+  abbreviation = c("abc",
+                   "123",
+                   "PhD"),
+  term = c("Some letters",
+           "Some numbers",
+           "Doctor of Philosophy")) %>%
+  arrange(term)  # order alphabetically
+table <- unique(table) # remove duplicates
+
+\newpage
+
+## Step 2 - make a \LaTeX table using `kable` {-}
+
+knitr::kable(table, longtable = T, booktabs = T, format = "latex", escape = F,
+             row.names = F,
+             col.names = c("Abbreviation","Term")) %>%
+  kable_styling(latex_options = c("striped", "HOLD_position", "repeat_header"), 
+                position = "center")
+-->
+
+\begin{longtable}{l>{\raggedright\arraybackslash}p{30em}}
+\toprule
+Abbreviation & Term\\
+\midrule
+\endfirsthead
+\multicolumn{2}{@{}l}{\textit{(continued)}}\\
+\toprule
+Abbreviation & Term\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\endlastfoot
+\cellcolor{gray!6}{PhD} & \cellcolor{gray!6}{Doctor of Philosophy}\\
+abc & Some letters\\
+\cellcolor{gray!6}{123} & \cellcolor{gray!6}{Some numbers}\\*
+\end{longtable}

@@ -1,11 +1,25 @@
-# Mathematics and Science {#math-sci}
+---
+output: 
+    thesisdown::thesis_pdf: default
+bibliography: bib/thesis.bib
+csl: csl/nature.csl
+space_betwee_paragraphs: true
+fig_caption: true
+always_allow_html: yes
+link-citations: true
+toc-depth: 1
+lot: true
+lof: true
+editor_options: 
+  chunk_output_type: console
+---
 
-<!-- Required to number equations in HTML files -->
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>
+<style>
+body {
+text-align: justify}
+</style>
+
+# Mathematics and Science {#chapter2}
 
 ## Math
 

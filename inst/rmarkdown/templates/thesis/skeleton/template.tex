@@ -1,17 +1,13 @@
 % bristolthesis template.tex file
 % Best not to fiddle with this much/at all or things might break
 % This needs to line up with the contents of bristolthesis.cls and vice versa
-%
-%
-%
-%
-%
 
 \documentclass[11pt,twoside]{bristolthesis}
-% \documentclass[11pt,oneside]{bristolthesis} %% use this option if you don't want every other page to be off to one side -- SHOULD CHANGE BACK TO TWOSIDED FOR PRINTING
 
+% Unicode characters that dont work
+\DeclareUnicodeCharacter{2212}{-}
 
-%% Packages - these are those which i used for my thesis so might not be specific to yours
+% Packages - not all will be relevant
 \usepackage{graphicx,latexsym}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -20,21 +16,59 @@
 \usepackage{booktabs}
 \usepackage{setspace}
 \usepackage{siunitx}
-% \usepackage{chemarr} %% Useful for one reaction arrow, useless if you're not a chem major
+\usepackage{xcolor}
 \usepackage[hyphens]{url}
-\usepackage[hidelinks]{hyperref} %% remove [hidelinks] to have a red box appear around cross-references and hyperlinks
+\usepackage{hyperref}
 \usepackage{lmodern}
-\usepackage{float}
-\floatplacement{figure}{H}
 \usepackage{rotating}
-% \usepackage{times} % other fonts are available like times, bookman, charter, palatino
+\usepackage{float}
+\usepackage{lscape}
+\usepackage{afterpage}
+\usepackage{indentfirst}
+\usepackage{tocloft}
+\usepackage{breakcites}
 
-%% Paramaters for global document
-\hypersetup{colorlinks = false}
+% Package specific settings
+%% link colours
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=magenta,
+  anchorcolor=black,
+  citecolor=green,
+  filecolor=cyan,
+  menucolor=magenta,
+  runcolor=cyan,
+  urlcolor=magenta,
+  breaklinks=true
+}
+
+%% force a blank page - \afterpage{\blankpage}
+\newcommand\blankpage{% 
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
+%% force float placement
+\floatplacement{figure}{H}
+
+%% Landscape page
+\newcommand{\blandscape}{\begin{landscape}}
+\newcommand{\elandscape}{\end{landscape}}
+
+% toc spacing
+\setlength\cftparskip{1pt} % increase or decrease this number to change spacing between section levels in ToC
+\setlength\cftbeforechapskip{3pt} % increase or decrease this number to change spacing between chapter levels in ToC
+
+% Font
+\renewcommand*\familydefault{\sfdefault} 
+\usepackage[scaled]{helvet}
+\renewcommand\familydefault{\sfdefault} 
+\usepackage[T1]{fontenc}
+
+% Paramaters for global document
 \renewcommand{\UrlBreaks}{\do\/\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z\do\0\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\%\do\.\do\-}
 \renewcommand{\chapterautorefname}{Chapter}
-\usepackage{times} % other fonts are available like times, bookman, charter, palatino
-\usepackage{caption}
 
 % Use ref for internal links
 \renewcommand{\hyperref}[2][???]{\autoref{#1}}
@@ -42,7 +76,8 @@
 \def\sectionautorefname{Section}
 \def\subsectionautorefname{Subsection}
 \usepackage{caption}
-\captionsetup{width=5in}
+% \captionsetup{width=5in}
+\captionsetup{width=\textwidth}
 
 % Syntax highlighting #22
 $if(highlighting-macros)$
@@ -62,7 +97,6 @@ $endif$
 \degree{$degree$}
 \logo{$logo$}
 %%%
-
 
 %%% The document formatting
 \makeatletter
@@ -91,6 +125,10 @@ $endif$
 $acknowledgements$
 }
 
+\COVID{
+$covid$
+}
+
 \Declaration{
 $declaration$
 }
@@ -100,7 +138,15 @@ $abstract$
 }
 
 \Publications{
-$Publications$
+$publications$
+}
+
+\Outline{
+$outline$
+}
+
+\Contributions{
+$contributions$
 }
 
 \Abbreviations{
@@ -111,10 +157,7 @@ $for(header-includes)$
 	$header-includes$
 $endfor$
 
-%%% Main document
-\spacing{1}
-\DeclareUnicodeCharacter{2212}{-}
-
+%%% references
 $if(csl-refs)$
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
@@ -138,33 +181,69 @@ $if(csl-refs)$
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
 
+%%% Main document
+\spacing{1.5}
 \begin{document}
 $if(title)$
   \maketitle
 $endif$
 
-\frontmatter % this stuff will be roman-numbered
+\frontmatter % this is single sided sort of and will will be roman-numbered
 \pagestyle{empty} % this removes page numbers from the frontmatter
+\pagenumbering{roman}
+\stepcounter{page}% comment if the titlepage should not be counted
+\begingroup
+
 $if(abstract)$
   \begin{abstract}
     $abstract$
+    \addcontentsline{toc}{chapter}{Abstract}
   \end{abstract}
 $endif$
+
+$if(covid)$
+  \begin{covid}
+    $covid$
+    \addcontentsline{toc}{chapter}{COVID-19 statement}
+  \end{covid}
+$endif$
+
 $if(acknowledgements)$
   \begin{acknowledgements}
     $acknowledgements$
+    \addcontentsline{toc}{chapter}{Acknowledgements}
   \end{acknowledgements}
 $endif$
-$if(publications)$
-  \begin{publications}
-    $publications$
-  \end{publications}
-$endif$
+
 $if(declaration)$
   \begin{declaration}
     $declaration$
+    \addcontentsline{toc}{chapter}{Declaration}
   \end{declaration}
 $endif$
+
+$if(outline)$
+  \begin{outline}
+    $outline$
+    \addcontentsline{toc}{chapter}{Outline}
+  \end{outline}
+$endif$
+
+$if(contributions)$
+  \begin{contributions}
+    $contributions$
+    \addcontentsline{toc}{chapter}{Contributions}
+  \end{contributions}
+$endif$
+
+$if(publications)$
+  \begin{publications}
+    $publications$
+    \afterpage{\blankpage}
+    \addcontentsline{toc}{chapter}{Research output}
+  \end{publications}
+$endif$
+
 $if(toc)$
   \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
   {
@@ -173,22 +252,34 @@ $if(toc)$
   \tableofcontents
   }
 $endif$
+
 $if(lot)$
   \listoftables
-$endif$
-$if(lof)$
-  \listoffigures
+  \addcontentsline{toc}{chapter}{List of tables}
 $endif$
 
-\spacing{1.5}
-\mainmatter % here the regular arabic numbering starts
-\pagestyle{plain}
-$body$
+$if(lof)$
+  \listoffigures
+  \addcontentsline{toc}{chapter}{List of figures}
+$endif$
+
 $if(abbreviations)$
   \begin{abbreviations}
     $abbreviations$
+    \afterpage{\blankpage}
+    \addcontentsline{toc}{chapter}{List of abbreviations}
   \end{abbreviations}
 $endif$
+
+\endgroup
+
+
+\mainmatter % here the regular arabic numbering starts
+\spacing{1.5}
+\pagestyle{plain}
+\pagenumbering{arabic}
+
+$body$
 
 \end{document}
 

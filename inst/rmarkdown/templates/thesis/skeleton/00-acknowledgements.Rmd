@@ -3,4 +3,4 @@ body {
 text-align: justify}
 </style>
 
-THIS IS WHERE YOU THANK PEOPLE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+This is where you thank people!!

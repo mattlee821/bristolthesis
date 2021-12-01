@@ -1,0 +1,25 @@
+---
+output: 
+    thesisdown::thesis_pdf: default
+bibliography: bib/thesis.bib
+csl: csl/nature.csl
+space_betwee_paragraphs: true
+fig_caption: true
+always_allow_html: yes
+link-citations: true
+toc-depth: 1
+lot: true
+lof: true
+editor_options: 
+  chunk_output_type: console
+---
+
+This is where you can outline your thesis if you want to. If you don't need to do this then remove the lines:
+
+```{latex}
+outline: |
+  `r if(knitr:::is_latex_output()) paste(readLines("00-outline.Rmd"), 
+        collapse = '\n  ')`
+```
+
+from the `YAML` header in `index.Rmd`. I used this to give an outline (one paragraph) of the thesis as a whole, so what each chapter did. Then I had a paragraph on where all of the scripts and data for the thesis were stored and how to access these. \par

@@ -1,0 +1,19 @@
+---
+output: 
+    thesisdown::thesis_pdf: default
+bibliography: bib/thesis.bib
+csl: csl/nature.csl
+space_betwee_paragraphs: true
+fig_caption: true
+always_allow_html: yes
+link-citations: true
+toc-depth: 1
+lot: true
+lof: true
+editor_options: 
+  chunk_output_type: console
+---
+
+Sometimes you work with different people during your PhD. This is where you can say what those people did and importantly what you did. \par
+
+All of the work in Chapters \@ref(chapter1), \@ref(chapter2), \@ref(chapter3), and \@ref(chapter4) was performed and written by myself. I lead all of the work in Chapter \@ref(chapter2), which was conducted in collaboration with Person A, Person B, Person C, and Person D who all contributed to analysis 1. Person E and Person F shared scripts with me for X analysis, which I then used for reference in my analyses in Chapter \@ref(chapter1). Person G provided helpful guidance and feedback on the interpretation of results from results in Chapter \@ref(chapter2). \par

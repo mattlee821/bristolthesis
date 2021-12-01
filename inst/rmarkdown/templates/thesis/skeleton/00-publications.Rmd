@@ -1,6 +1,50 @@
+---
+output: 
+    thesisdown::thesis_pdf: default
+bibliography: bib/thesis.bib
+csl: csl/nature.csl
+space_betwee_paragraphs: true
+fig_caption: true
+always_allow_html: yes
+link-citations: true
+toc-depth: 1
+lot: true
+lof: true
+editor_options: 
+  chunk_output_type: console
+---
+
 <style>
 body {
 text-align: justify}
 </style>
 
-The greatest publication list ever
+#### Peer-reviews or pre-print articles relevant to the work conducted in this thesis {-}
+
+\noindent 
+Bos, M.M., Goulding, N.J., **Lee, M.A.** et al. Investigating the relationships between unfavourable habitual sleep and metabolomic traits: evidence from multi-cohort multivariable regression and Mendelian randomization analyses. [BMC Med 19, 69, 2021](https://doi.org/10.1186/s12916-021-01939-0). *This is a paper example and it is relevant to my thesis because i talk about it at some point in Chapter \@ref(chapter1).* 
+
+\noindent 
+David A Hughes, Kurt Taylor, Nancy McBride, **Matthew A Lee**, Dan Mason, Deborah A Lawlor, Nicholas J Timpson, Laura J Corbin. *metaboprep*:  an `R` package for pre-analysis data description and processing. bioRxiv 2021.07.07.451488; doi: [https://doi.org/10.1101/2021.07.07.451488](https://www.biorxiv.org/content/10.1101/2021.07.07.451488v1). *This is another paper example and i dont talk about it but i do use the `R` package.*
+
+#### Additional peer-reviewed articles published during my PhD {-}
+
+\noindent 
+**Matthew A Lee**, George McMahon, Ville Karhunen, Kaitlin H Wade, Laura J Corbin, David A Hughes, George Davey Smith, Debbie A Lawlor, Marjo-Riitta Jarvelin, Nicholas J Timpson, Common variation at 16p11.2 is associated with glycosuria in pregnancy: findings from a genome-wide association study in European women, [Human Molecular Genetics, Volume 29, Issue 12, 15 June 2020, Pages 2098–2106](https://doi.org/10.1093/hmg/ddaa054).
+
+\noindent 
+Linda M. O’Keeffe, Joshua A. Bell, Kate N. O’Neill, **Matthew A Lee**, Mark Woodward, Sanne Peters, George Davey Smith, Patricia M. Kearney, Sex-specific associations of adiposity with cardiometabolic traits: multi-life-stage cohort study with repeat metabolomics, [medRxiv, 2020](https://doi.org/10.1101/2020.11.30.20240895). 
+
+#### Resources produced during this thesis {-}
+
+\noindent 
+`metaboprep`:  an `R` package for pre-analysis data description and processing, 2020
+
+\vspace*{-1em}
+[github.com/MRCIEU/metaboprep](https://github.com/MRCIEU/metaboprep)
+
+\noindent 
+`EpiViz`: an implementation of Circos plots for epidemiologists, 2020
+
+\vspace*{-1em}
+[github.com/mattlee821/EpiViz](https://github.com/mattlee821/EpiViz)

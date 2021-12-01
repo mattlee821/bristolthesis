@@ -1,9 +1,39 @@
+---
+output: 
+    thesisdown::thesis_pdf: 
+      toc: true
+      toc-depth: 2
+      latex_engine: pdflatex
+bibliography: bib/thesis.bib
+csl: csl/nature.csl
+space_betwee_paragraphs: true
+fig_caption: true
+always_allow_html: yes
+link-citations: true
+lot: true
+lof: true
+indent: true
+header-includes: # include other LaTeX packages here
+    \usepackage{booktabs}
+    \usepackage{longtable}
+    \usepackage{siunitx}
+    \usepackage[left]{lineno}
+    \usepackage{float}
+    \floatplacement{figure}{H}
+    \linenumbers
+    \pagestyle{plain}
+    \raggedbottom 
+    \usepackage{indentfirst}
+editor_options: 
+  chunk_output_type: console
+---
+
 <style>
 body {
 text-align: justify}
 </style>
 
-My abstract will go here and it will be a solid abstract. Full of the things that go in abstracts. Such as numbers, acronyms, other words, and lots of punctuation. <br>
+My abstract will go here and it will be a solid abstract. Full of the things that go in abstracts. Such as numbers, acronyms, other words, and lots of punctuation. \par
 
-It will have multiple paragraphs too!
+You can reference other Chapters, like Chapter \@ref(chapter1), or \@ref(chapter3). We can add references as well[@angel2000], just like we normally would. \par
 
