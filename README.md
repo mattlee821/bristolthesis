@@ -45,3 +45,30 @@ if(doc.type == "docx"){
 }else{
 }
 ```
+
+## Tips
+
+### Remove page numbers
+Soemtimes a figure will take up a whole page, or maybe your figure caption overlaps your page number. To remove the page number:
+
+```
+\newpage
+\thispagestyle{empty}
+```
+
+This will create a new page and then give that page an empty style which means it has no page number. You can now have your figure code diretcly after this code. The next page will be numbered appropriately, i.e. if the page with no number is 11 the next page will be 12.
+
+### Figure captions
+Figure captions can be made outside of the figure with an internal reference. For example we have a figure called `figure.pdf` and we want it to have a figure caption that is printed with the figure, but we also want a figure title in our table of figures. Our figure caption is too long to go in the table of figures. So we use the `fig.cap` and `fig.scap` arguments in the `knitr` block. The benefit of using an internal reference as below means we can reference within the figure caption if we want.
+
+`(ref:figure-caption-cap) **This is my figure title**. This will be printed with the figure. But it will be too long to go in the table of figures. Using an internal reference means we can embed a reference in this caption though[@r20201]`
+
+`(ref:figure-subcaption-scap) This is my figure title`
+
+```{r figure, echo=FALSE, out.width='100%', fig.cap='(ref:figure-caption-cap)', fig.scap='(ref:figure-subcaption-scap)'}
+knitr::include_graphics("my/figure.pdf")
+```
+
+
+
+
