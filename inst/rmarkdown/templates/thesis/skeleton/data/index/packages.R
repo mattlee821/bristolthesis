@@ -69,11 +69,6 @@ if(!require(ggforestplot)){
   library(ggforestplot)
 }
 
-if(!require(MetaboQC)){
-  devtools::install_github("MRCIEU/MetaboQC")
-  library(MetaboQC)
-}
-
 if(!require(knitr)){
   install.packages("knitr")
   library(knitr)
